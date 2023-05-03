@@ -49,9 +49,11 @@
 		<div class="col-md-4">
             <div class="card">
                 <div class="card-header">Submit Category</div>
-				{{session('alert')}}
+				@if(session('alert'))
+					{{session('alert')}}
+				@endif
                 <div class="card-body">
-                    <form action="{{ url('subinsert') }}" method="POST">
+                    <form action="{{url('subinsert')}}" method="POST">
 					  @csrf
 					  <div class="form-group">
 						<label for="exampleInputEmail1">Category</label>

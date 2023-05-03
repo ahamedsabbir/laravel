@@ -15,27 +15,37 @@ class SubcategoryConroller extends Controller
         $this->middleware('auth');
     }
 	function index(){
-		$category = category::get();
+		$category = category::latest()->get();
 		$subcategory = Subcategory::simplePaginate(3);
 		return view("category/subcategory", compact("category", "subcategory"));
 	}
+	function single(){
+		
+	}
 	function insert(Request $request){
-		$request->validate([
-			'category' => 'required',
-			'name' => 'required|unique:subcategories,name'
-		],[
-			'name.required' => 'catagory not empty'
-		]);
-		if(Subcategory::where('category', $request->category)->where('name', $request->name)){
-			return back()->with("alert", "insert done....");
+		$request->validate(
+			[
+				'category' => 'required',
+				//'name' => 'required|unique:subcategories,name'
+			],
+			[
+				'name.required' => 'catagory not empty'
+			]
+		);
+		if(Subcategory::withTrashed()->where('category', $request->category)->where('name', $request->name)->exists()){
+			return back()->with("alert", "data allrady exists....");
 		}else{
-			Subcategory::insert([
+			$insert = Subcategory::insert([
 				"name" => $request->name,
 				"category" => $request->category,
 				"user" => auth::id(),
 				"created_at" => Carbon::now()
 			]);
-			return back()->with("alert", "insert done....");
+			if($insert == true){
+				return back()->with("alert", "data insert done....");
+			}else{
+				return back()->with("alert", "data not insert done....");
+			}
 		}
 		
 	}
