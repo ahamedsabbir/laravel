@@ -23,6 +23,36 @@
 		<span class="menu-item-label">Category</span>
 	  </div><!-- menu-item -->
 	</a><!-- sl-menu-link -->
+	<a href="{{url('product/loop')}}" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<span class="menu-item-label">Product</span>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<a href="{{url('cart')}}" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<span class="menu-item-label">Cart</span>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<a href="{{route('cupon')}}" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<span class="menu-item-label">Cupon</span>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<a href="{{url('users/loop')}}" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<span class="menu-item-label">Users</span>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
+	<a href="{{url('payment')}}" class="sl-menu-link">
+	  <div class="sl-menu-item">
+		<i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+		<span class="menu-item-label">Payment</span>
+	  </div><!-- menu-item -->
+	</a><!-- sl-menu-link -->
 	@endauth
 	<a href="#" class="sl-menu-link">
 	  <div class="sl-menu-item">
@@ -131,7 +161,7 @@
 	  <div class="dropdown">
 		<a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
 		  <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
-		  <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
+		  <img src="{{asset('upload/user/'.auth::User()->photo)}}" class="wd-32 rounded-circle" alt="">
 		</a>
 		<div class="dropdown-menu dropdown-menu-header wd-200">
 		  <ul class="list-unstyled user-profile-nav">

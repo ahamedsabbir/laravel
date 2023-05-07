@@ -88,5 +88,10 @@
             @yield('content')
         </main>
     </div>
+	<script src="{{asset('starlight/lib/jquery/jquery.js')}}"></script>
+    <script src="{{asset('starlight/lib/popper.js/popper.js')}}"></script>
+    <script src="{{asset('starlight/lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{asset('starlight/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+	@yield('script')
 </body>
 </html>

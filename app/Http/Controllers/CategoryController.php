@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use auth;
+
 use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\Product;
+use App\Models\Thumbnail;
+
+use auth;
 
 class CategoryController extends Controller
 {
@@ -21,7 +25,7 @@ class CategoryController extends Controller
 	}
 	function single($id){
 		$category = Category::latest()->paginate(3);
-		return view("category/category", compact("category"));
+		//return view("category/category", compact("category"));
 	}
 	function insert(Request $request){
 		$request->validate(
@@ -57,7 +61,9 @@ class CategoryController extends Controller
 	}
 	function softdelete_function($id){
 		Category::find($id)->delete();
-		Subcategory::where('category', $id)->delete();
+		Product::where('category', $id)->delete();
+		Thumbnail::where('product_id', $id)->delete();
+		Subcategory::where(['category' => $id])->delete();
 		return back()->with("alert", "insert done....");
 	}
 	function mark_softdelete_function(Request $request){

@@ -54,6 +54,9 @@
 			<div class="card">
 				<div class="card-header">Photo Change</div>
 				<div class="card-body">
+					<div>
+						<img  style="width:100px; height:100px;" src="{{asset('upload/user/'.auth::User()->photo)}}" />
+					</div>
 					<form action="{{url('profile/photo/edit/'.auth::id())}}" method="POST" enctype="multipart/form-data">
 					  @csrf
 					  <div class="form-group">
