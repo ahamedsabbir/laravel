@@ -11,6 +11,9 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Checkout;
+
+use PDF;
+
 use Carbon\Carbon;
 use Str;
 use Auth;
@@ -76,8 +79,12 @@ class CheckoutController extends Controller
 			}
 		}
 	}
-	function online_payment_function(Request $request){
-		
+	function online_payment_function(Request $request){}
+	
+	function invoice_function(){
+		$data = "asda";
+		$pdf = PDF::loadView('pdf/invoice', ['data' => $data]);
+        return $pdf->download('invoice.pdf');
 	}
 	
 }

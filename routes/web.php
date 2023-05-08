@@ -74,3 +74,8 @@ Route::get('checkout/payment/online', [App\Http\Controllers\CheckoutController::
 
 Route::get('users/loop', [App\Http\Controllers\UserController::class, 'all_user']);
 Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index_function']);
+
+
+
+
+Route::get('download/invoice', [App\Http\Controllers\CheckoutController::class, 'invoice_function']);

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Thumbnail;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use Carbon\Carbon;
 use auth;
@@ -65,6 +66,12 @@ class ProductController extends Controller
 	function category_function($id){
 		return view('product/category', [
 			'products' => Product::where('category', $id)->get()
+		]);
+	}
+	function search_function(){
+		$keyword = $_GET['keyword']
+		return view('search', [
+			"products" = Product::where("name", "like", "%$keyword%")->get();
 		]);
 	}
 	function delete_function($id){
